@@ -1,0 +1,18 @@
+{
+  "name": "book-reviews",
+  "version": "1.0.0",
+  "description": "web app for writting and viewing book reviews",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmiliyanPanagyurski/Book-Reviews.git"
+  },
+  "author": "emiliyan-panagyurski",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.0"
+  }
+}
