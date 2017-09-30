@@ -33,6 +33,39 @@ class DataBase {
         const user = this.getCurrentUser();
         return user.updateProfile(data);
     }
+
+    createReview(data) {
+        this.database.ref('reviews/' + data.authorUid + data.title).set(data).catch((err) => {
+            console.log(err.message);
+        });
+    }
+
+    getAllReviews() {
+        return new Promise((resolve, reject) => {
+            let reviews = this.database.ref('reviews/');
+            reviews.once('value', data => {
+                resolve(data.val());
+            });
+        });
+    }
+
+    getReviews(query) {
+        return new Promise((resolve, reject) => {
+            let reviews = this.database.ref('reviews/').orderByChild(query.prop).equalTo(query.value);
+            reviews.once('value', data => {
+                resolve(data.val());
+            });
+        });
+    }
+
+    getReview(query) {
+        return new Promise((resolve, reject) => {
+            let reviews = this.database.ref('reviews/').child(query);
+            reviews.once('value', data => {
+                resolve(data.val());
+            });
+        });
+    }
 }
 
 const dataBase = new DataBase(firebaseModule);

@@ -1,4 +1,4 @@
-const HANDLERS_PATH = './views/templates/';
+const HANDLERS_PATH = '../../views/templates/';
 
 class TemplateHandler {
 

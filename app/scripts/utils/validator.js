@@ -41,6 +41,24 @@ class Validator {
             },
         });
     }
+
+    validateReview() {
+        $('#review-form').validate({
+            rules: {
+                title: {
+                    required: true,
+                    minlength: 10,
+                },
+                content: {
+                    required: true,
+                    minlength: 100,
+                },
+            },
+            highlight: function (element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+        });
+    }
 }
 
 const validator = new Validator();
