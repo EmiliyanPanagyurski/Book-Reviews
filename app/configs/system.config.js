@@ -22,9 +22,11 @@ SystemJS.config({
 
         // models
         'user-model': '../scripts/data/models/user.model.js',
+        'review-model': '../scripts/data/models/review.model.js',
 
         //controllers
         'user-controller': '../scripts/controllers/user.controller.js',
+        'review-controller': '../scripts/controllers/review.controller.js',
 
     },
     packages: {

@@ -1,5 +1,6 @@
 import { userController } from 'user-controller';
 import { userControl } from 'user-controls';
+import { reviewController } from 'review-controller';
 
 class Router {
     start() {
@@ -7,9 +8,11 @@ class Router {
             this.get('#/', (sammy) => {
                 sammy.redirect('#/home');
             });
-            this.get('#/home', () => {
-                $('#content').html('HOME');
-            });
+            this.get('#/home', reviewController.loadHomePage);
+
+            // Category routes
+            this.get('#/home/category/?', reviewController.loadCategory);
+            this.get('#/home/review/:id', reviewController.loadReview);
 
             // User routes
             this.get('#/sign-up', userController.loadSignUpPage);
@@ -17,6 +20,10 @@ class Router {
             this.get('#/sign-in', userController.loadSignInPage);
             this.post('#/sign-in', userController.signIn);
             this.get('#/sign-out', userController.signOut);
+
+            // Reviews routes
+            this.get('#/create-review', reviewController.loadCreateReviewPage);
+            this.post('#/create-review', reviewController.createReview);
 
             userControl.toggleUserControlElement();
         });
