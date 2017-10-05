@@ -47,7 +47,11 @@ class Validator {
             rules: {
                 title: {
                     required: true,
-                    minlength: 10,
+                    minlength: 5,
+                },
+                bookTitle: {
+                    required: true,
+                    minlength: 5,
                 },
                 content: {
                     required: true,
