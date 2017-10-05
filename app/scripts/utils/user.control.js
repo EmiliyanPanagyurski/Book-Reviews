@@ -7,8 +7,8 @@ class UserControl {
 
     toggleUserControlElement() {
         this.userModel.isUserLoggedIn()
-            .then((user) => {
-                if(user) {
+            .then((isLoged) => {
+                if(isLoged) {
                     $('.nav-link-user-control').addClass('hidden');
                     $('.nav-link-profile').removeClass('hidden');
                     $('#logout').removeClass('hidden');

@@ -1,32 +1,32 @@
 import { dataBase } from 'database';
 class UserModel {
     constructor(database) {
-        this.database = database;
+        this.dataBase = database;
     }
 
     signUp(formData) {
-        return this.database.createUser(formData);
+        return this.dataBase.createUser(formData);
     }
 
     signIn(formData) {
-        return this.database.signInWithEmail(formData);
+        return this.dataBase.signInWithEmail(formData);
     }
 
     signOut() {
-        return this.database.signOut();
+        return this.dataBase.signOut();
     }
     
     getCurrentUser() {
-        return this.database.getCurrentUser();
+        return this.dataBase.getCurrentUser();
     }
     isUserLoggedIn() {
         return new Promise((resolve, reject) => {
-            this.database.onAuthStateChanged((user) => resolve(!!user));
+            this.dataBase.onAuthStateChanged((user) => resolve(!!user));
         });
     }
 
     updateProfile(data) {
-        return this.database.updateUserProfile(data);
+        return this.dataBase.updateUserProfile(data);
     }
 }
 

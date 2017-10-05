@@ -23,6 +23,7 @@ SystemJS.config({
         // models
         'user-model': '../scripts/data/models/user.model.js',
         'review-model': '../scripts/data/models/review.model.js',
+        'comment-model': '../scripts/data/models/comment.model.js',
 
         //controllers
         'user-controller': '../scripts/controllers/user.controller.js',

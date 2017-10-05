@@ -66,6 +66,21 @@ class DataBase {
             });
         });
     }
+
+    createComment(data) {
+        this.database.ref('comments/').push(data).catch((err) => {
+            console.log(err.message);
+        });
+    }
+
+    getComments(query) {
+        return new Promise((resolve, reject) => {
+            let comments = this.database.ref('comments/').orderByChild(query.prop).equalTo(query.value);
+            comments.once('value', data => {
+                resolve(data.val());
+            });
+        });
+    }
 }
 
 const dataBase = new DataBase(firebaseModule);

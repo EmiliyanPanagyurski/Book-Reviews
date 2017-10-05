@@ -1,12 +1,15 @@
 import { reviewModel } from 'review-model';
+import { commentModel } from 'comment-model';
 import { validator } from 'validator';
 import { uploadImg } from 'img-upload';
 import { htmlHandler } from 'html-handler';
 import { templateHandler } from 'template-handler';
+import { userControl } from 'user-controls';
 
 class ReviewController {
-    constructor(reviewModel, validator, uploadImg, htmlHandler) {
+    constructor(reviewModel, commentModel, validator, uploadImg, htmlHandler) {
         this.reviewModel = reviewModel;
+        this.commentModel = commentModel;
         this.validator = validator;
         this.uploadImg = uploadImg;
     }
@@ -35,6 +38,7 @@ class ReviewController {
                     author: user.displayName,
                     authorUid: user.uid,
                     image: response.data.link,
+                    category: $('#category').val(),
                     title: sammy.params.title,
                     content: sammy.params.content,
                 };
@@ -54,8 +58,7 @@ class ReviewController {
     }
 
     loadCategory(sammy) {
-        // prop is hardcoded for testing TODO: implement
-        reviewModel.getReviews({prop: 'author', value: sammy.params.username})
+        reviewModel.getReviews({prop: 'category', value: sammy.params.category})
             .then((reviews) => {
                 templateHandler.setTemplate('category.template', '#content', {reviews: reviews});
             }).catch((err) => {
@@ -64,15 +67,49 @@ class ReviewController {
     }
 
     loadReview(sammy) {
+        let review;
+        let isLoged;
+
+        reviewModel.isUserLoggedIn().then((isLoggedIn) => {
+            if (isLoggedIn) {
+                isLoged = true;
+            } else {
+                isLoged = false;
+            }
+
+            return isLoged;
+        });
+
         reviewModel.getReview(sammy.params.id)
-            .then((review) => {
-                templateHandler.setTemplate('review.template', '#content', review);
+            .then((foundReview) => {
+                review = foundReview;
+                return review;
+            })
+            .then(() => {
+                return commentModel.getComments({prop: 'review', value: review.authorUid + review.title});
+            })
+            .then((comments) => {       
+                templateHandler.setTemplate('review.template', '#content', { review: review, comments: comments, isLoged: isLoged});
             }).catch((err) => {
                 console.log(err);
             });
     }
+
+    createComment(sammy) {
+        let user = reviewModel.getCurrentUser();
+
+        const comment = {
+            author: user.displayName,
+            image: user.photoURL,
+            content: sammy.params.comment,
+            review: sammy.params.id,
+        };
+
+        commentModel.create(comment);
+        sammy.redirect('#/home/review/' + sammy.params.id);
+    }
 }
 
-const reviewController = new ReviewController(reviewModel, validator, uploadImg);
+const reviewController = new ReviewController(reviewModel, commentModel, validator, uploadImg);
 
 export { reviewController };
