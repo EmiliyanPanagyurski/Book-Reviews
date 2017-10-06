@@ -1,27 +1,35 @@
-<div class="container">
-    <div class="row">
-        {{#each reviews}}
-        <div class="col">
-            <a href="#/home/review/{{authorUid}}{{title}}">
-                <div class="single-article-image-containter">
-                    <img class="single-article-image" src="{{image}}" />
+<div class="row articles-containter">
+    {{#each reviews}}
+    <div class="col- articles-single-article">
+        <a href="#/home/review/{{authorUid}}{{title}}">
+            <div class="single-article-image-containter">
+                <div class="single-article-category">
+                    {{category}}
                 </div>
+                <img class="single-article-image" src="{{image}}" />
+                <div class="single-article-date">
+                    <span>{{month}}</span>
+                    <span> {{day}}</span>
+                </div>
+            </div>
 
-                <div class="row">
-                    {{{title}}}
-                </div>
+            <div class="single-article-title" title="{{{title}}}">
+                {{{title}}}
+            </div>
 
-                <div class="row">
-                    {{author}}
-                </div>
+            <div class="single-article-author">
+                AUTHOR {{author}}
+            </div>
 
-                <div class="row">
-                    {{{content}}}
-                </div>
-            </a>
-        </div>
-        {{/each}}
+            <div class="single-article-content">
+                {{{content}}}
+            </div>
+
+            <img class="bottom-line" src="./images/bottom-line.png">
+        </a>
     </div>
+    {{/each}}
+</div>
 
     {{#if pagination}}
     <div class="row pagination-container no-gutters">
