@@ -28,6 +28,10 @@ class UserModel {
     updateProfile(data) {
         return this.dataBase.updateUserProfile(data);
     }
+
+    resetPassword(email) {
+        return this.dataBase.resetPassword(email);
+    }
 }
 
 const userModel = new UserModel(dataBase);

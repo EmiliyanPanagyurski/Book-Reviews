@@ -9,13 +9,13 @@ class UserControl {
         this.userModel.isUserLoggedIn()
             .then((isLoged) => {
                 if(isLoged) {
-                    $('.nav-link-user-control').addClass('hidden');
-                    $('.nav-link-profile').removeClass('hidden');
-                    $('#logout').removeClass('hidden');
+                    $('.nav-item-user-control').addClass('hidden');
+                    $('.nav-item-profile').removeClass('hidden');
+                    $('.nav-item-user-logout').removeClass('hidden');
                 } else {
-                    $('.nav-link-user-control').removeClass('hidden');
-                    $('.nav-link-profile').addClass('hidden');
-                    $('#logout').addClass('hidden');
+                    $('.nav-item-user-control').removeClass('hidden');
+                    $('.nav-item-profile').addClass('hidden');
+                    $('.nav-item-user-logout').addClass('hidden');
                 }
             }).catch((err) => {
                 console.log(err.msg);

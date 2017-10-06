@@ -20,6 +20,9 @@ class Router {
             this.get('#/sign-in', userController.loadSignInPage);
             this.post('#/sign-in', userController.signIn);
             this.get('#/sign-out', userController.signOut);
+            this.get('#/home/profile/change-avatar', userController.loadProfilePicture)
+            this.post('#/home/profile/change-avatar', userController.changeAvatar);
+            this.get('#/home/profile/password-reset', userController.loadProfilePassword);
 
             // Reviews routes
             this.get('#/create-review', reviewController.loadCreateReviewPage);

@@ -1,6 +1,7 @@
 import { userModel } from 'user-model';
 import { uploadImg } from 'img-upload';
 import { htmlHandler } from 'html-handler';
+import { templateHandler } from 'template-handler';
 import { userControl } from 'user-controls';
 import { validator } from 'validator';
 
@@ -33,6 +34,39 @@ class UserController {
                 htmlHandler.setHtml('sign-in', '#content')
                     .then(()=> {
                         validator.validateSignIn();
+                    });
+
+            } else {
+                sammy.redirect('#/');
+            }
+        });
+    }
+
+    loadProfilePicture(sammy) {
+        let user = userModel.getCurrentUser();
+
+        userModel.isUserLoggedIn().then((isLoggedIn) => {
+            if (isLoggedIn) {
+                templateHandler.setTemplate('profile.avatar.template', '#content', { image: user.photoURL })
+                    .then(()=> {
+                        // TODO VALIDATIONS
+                    });
+
+            } else {
+                sammy.redirect('#/');
+            }
+        });
+    }
+
+    loadProfilePassword(sammy) {
+        userModel.isUserLoggedIn().then((isLoggedIn) => {
+            if (isLoggedIn) {
+                htmlHandler.setHtml('profile-password', '#content')
+                    .then(()=> {
+                        $('#password-reset').click(function() {
+                            let user = userModel.getCurrentUser();
+                            userModel.resetPassword(user.email);
+                        });
                     });
 
             } else {
@@ -103,6 +137,33 @@ class UserController {
                 sammy.redirect('#/');
             }).catch((err) => {
                 console.log(err);
+            });
+    }
+
+    changeAvatar(sammy) {
+        let user = userModel.getCurrentUser();
+        let imgUrl;
+
+        uploadImg.uploadToApi($('#avatar')[0].files[0])
+        .then((response) => {
+            imgUrl = response.data.link;
+            userModel.updateProfile({
+                displayName: user.displayName,
+                photoURL: imgUrl,
+            }).then(() =>{
+                sammy.redirect('#/home/profile/change-avatar');
+            }).catch((err) => {
+                console.log(err.message);
+            });
+        });
+    }
+
+    resetPassword(email) {
+        userModel.resetPassword(email)
+            .then(() => {
+                console.log('password reset');
+            }).catch((err) => {
+                console.log(err.message);
             });
     }
 }

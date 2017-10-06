@@ -30,10 +30,11 @@ class ReviewController {
 
     createReview(sammy) {
         const user = reviewModel.getCurrentUser();
+        const date = new Date();
+        let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
         uploadImg.uploadToApi($('#image')[0].files[0])
             .then((response) => {
-
                 const formData = {
                     author: user.displayName,
                     authorUid: user.uid,
@@ -41,6 +42,8 @@ class ReviewController {
                     category: $('#category').val(),
                     title: sammy.params.title,
                     content: sammy.params.content,
+                    month: months[date.getMonth()],
+                    day: date.getDate(),
                 };
 
                 reviewModel.create(formData);

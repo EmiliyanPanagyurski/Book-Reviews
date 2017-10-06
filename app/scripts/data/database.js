@@ -34,6 +34,10 @@ class DataBase {
         return user.updateProfile(data);
     }
 
+    resetPassword(email) {
+        return this.auth.sendPasswordResetEmail(email);
+    }
+
     createReview(data) {
         this.database.ref('reviews/' + data.authorUid + data.title).set(data).catch((err) => {
             console.log(err.message);
