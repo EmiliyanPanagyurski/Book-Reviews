@@ -52,8 +52,16 @@ class ReviewController {
     }
 
     loadHomePage(sammy) { 
+        const pageSize = 5;
+        const page = 1;
+        
         reviewModel.getAllReviews()
             .then((reviews) => {
+                // will be moved to utils folder
+                // let filteredReviews = [];
+                // for(let i = (page - 1)*pageSize; i < page*pageSize; i++) {
+                //  filteredReviews.push(reviews[Object.keys(reviews)[i]]);
+                // }
                 templateHandler.setTemplate('home.template', '#content', {reviews: reviews});
             }).catch((err) => {
                 console.log(err);
@@ -63,7 +71,7 @@ class ReviewController {
     loadCategory(sammy) {
         reviewModel.getReviews({prop: 'category', value: sammy.params.category})
             .then((reviews) => {
-                templateHandler.setTemplate('category.template', '#content', {reviews: reviews});
+                templateHandler.setTemplate('category.template', '#content', {reviews: reviews, category: sammy.params.category });
             }).catch((err) => {
                 console.log(err);
             });
@@ -86,13 +94,26 @@ class ReviewController {
         reviewModel.getReview(sammy.params.id)
             .then((foundReview) => {
                 review = foundReview;
+                review.author = review.author.toUpperCase();
                 return review;
             })
             .then(() => {
                 return commentModel.getComments({prop: 'review', value: review.authorUid + review.title});
             })
-            .then((comments) => {       
-                templateHandler.setTemplate('review.template', '#content', { review: review, comments: comments, isLoged: isLoged});
+            .then((comments) => { 
+                let commentsCount = 0;
+                
+                if(comments) {
+                    commentsCount = Object.keys(comments).length;
+                }
+
+                templateHandler.setTemplate('review.template', '#content', { 
+                    review: review,
+                    comments: comments,
+                    commentsCount: commentsCount,
+                    isLoged: isLoged,
+                    category: review.category.toLowerCase(),
+                });
             }).catch((err) => {
                 console.log(err);
             });
@@ -100,12 +121,16 @@ class ReviewController {
 
     createComment(sammy) {
         let user = reviewModel.getCurrentUser();
+        const date = new Date();
+        let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
         const comment = {
             author: user.displayName,
             image: user.photoURL,
-            content: sammy.params.comment,
+            content: $('#comment-box').val(),
             review: sammy.params.id,
+            month: months[date.getMonth()],
+            day: date.getDate(),
         };
 
         commentModel.create(comment);

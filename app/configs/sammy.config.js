@@ -27,7 +27,7 @@ class Router {
             // Reviews routes
             this.get('#/create-review', reviewController.loadCreateReviewPage);
             this.post('#/create-review', reviewController.createReview);
-            this.post('#/review/:id/create-comment', reviewController.createComment);
+            this.post('#/home/review/:id/create-comment', reviewController.createComment);
 
             userControl.toggleUserControlElement();
         });

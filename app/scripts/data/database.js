@@ -55,7 +55,7 @@ class DataBase {
 
     getReviews(query) {
         return new Promise((resolve, reject) => {
-            let reviews = this.database.ref('reviews/').orderByChild(query.prop).equalTo(query.value);
+            let reviews = this.database.ref('reviews/').orderByChild(query.prop).equalTo(query.value.toUpperCase());
             reviews.once('value', data => {
                 resolve(data.val());
             });
