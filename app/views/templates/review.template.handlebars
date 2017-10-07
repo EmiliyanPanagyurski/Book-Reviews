@@ -1,55 +1,82 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="single-article-image-containter">
-                <img class="single-article-image" src="{{review.image}}" />
-            </div>
-
-            <div class="row" id="title">
-                {{{review.title}}}
-            </div>
-
-            <div class="row">
-                {{review.author}}
-            </div>
-
-            <div class="row">
-                {{{review.content}}}
-            </div>
-        </div>
-    </div>
+<div class="sitemap">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#/home">Home</a></li>
+        <li class="breadcrumb-item"><a class="breadcrumb-item-category" href="#/home/category/?category={{category}}">{{category}}</a></li>
+        <li class="breadcrumb-item">{{review.title}}</li>
+    </ol>
 </div>
 
-<div class="container">
-    <h3>COMMENTS</h3>
-    {{#each comments}}
-    <div class="row">
-        {{author}}
-    </div>
-    <div class="row">
-        {{image}}
-    </div>
-    <div class="row">
-        {{content}}
-    </div>
-    {{/each}}
-</div>
+<div class="detailed-review-container">
+    <div class="row no-gutters">
+        <div class="col- da-details">
+            <div class="da-image-container">
 
-
-<div class="container">
-    {{#if isLoged}}
-        <div>
-            <form action="#/review/{{review.authorUid}}{{review.title}}/create-comment" id="comment-form" method="post">
-                <h3>WRITE A COMMENT</h3>
-                <textarea id="comment" name="comment" cols="30" rows="10"></textarea>
-                <div>
-                    <input type="submit" id="submit-comment" class="btn btn-success" value="SUBMIT"></input>
+                <div class="da-category">
+                    {{review.category}}
                 </div>
-            </form>
+                <img class="da-image" src="{{review.image}}">
+                <div class="da-date">
+                    <span>{{review.month}}</span>
+                    <span> {{review.day}}</span>
+                </div>
+
+            </div>
         </div>
-    {{else}}
-        <div>
-            <h3>LOG IN TO POST A COMMENT</h3>
+
+        <div class="col- da-content-container">
+            <h1>{{review.title}}</h1>
+
+            <div class="da-author">
+                POSTED BY {{review.author}} IN {{review.category}} | {{commentsCount}} COMMENTS
+            </div>
+
+            <div class="da-content">
+                {{review.content}}
+            </div>
+
         </div>
-    {{/if}}
+    </div>
+</div>
+
+<div class="row no-gutters justify-content-end review-comments-container-parent">
+    <div class="review-comments-container">
+        <div class="comments-count">
+            {{commentsCount}} COMMENTS
+        </div>
+
+        <div class="comments-list-container">
+            {{#each comments}}
+            <div class="comments-list-item row no-gutters">
+                <div class="col- comment-item-info">
+                    <div class="comment-item-image-container">
+                        <img class="comment-author-avatar" src="{{image}}">
+                        <div class="comment-date">
+                            <span>{{month}}</span>
+                            <span>{{day}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col- comment-item-contnet-container">
+                    <h4>{{author}}</h4>
+                    <div class="comment-item-content">
+                        {{content}}
+                    </div>
+                </div>
+            </div>
+         {{/each}}
+        </div>
+        {{#if isLoged}}
+        <div class="add-comment-container add-comment-toggler">
+            <div>LEAVE A COMMENT</div>
+            <div class="rc-custom-form">
+                <form action="#/home/review/{{review.authorUid}}{{review.title}}/create-comment" method="post">
+                    <textarea name="content" id="comment-box" rows="8"></textarea>
+                    <div>
+                        <input type="submit" id="submit-comment" value="SUBMIT">
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+    </div>
 </div>

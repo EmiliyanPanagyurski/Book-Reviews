@@ -1,42 +1,55 @@
-<div class="container">
-    <div class="row">
-        {{#each reviews}}
-        <div class="col">
-            <a href="#/home/review/{{authorUid}}{{title}}">
-                <div class="single-article-image-containter">
-                    <img class="single-article-image" src="{{image}}" />
-                </div>
+<div class="sitemap">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#/home">Home</a></li>
+        <li class="breadcrumb-item">{{category}}</li>
 
-                <div class="row">
-                    {{{title}}}
-                </div>
+    </ol>
+</div>
 
-                <div class="row">
-                    {{author}}
+<div class="row reviews-containter">
+    {{#each reviews}}
+    <div class="col- reviews-single-review">
+        <a href="#/home/review/{{authorUid}}{{title}}">
+            <div class="single-review-image-containter">
+                <div class="single-review-category">
+                    {{category}}
                 </div>
+                <img class="single-review-image" src="{{image}}" />
+                <div class="single-review-date">
+                    <span>{{month}}</span>
+                    <span> {{day}}</span>
+                </div>
+            </div>
 
-                <div class="row">
-                    {{{content}}}
-                </div>
-            </a>
-        </div>
-        {{/each}}
+            <div class="single-review-title">
+                {{{title}}}
+            </div>
+
+            <div class="single-review-author">
+                AUTHOR {{author}}
+            </div>
+
+            <div class="single-review-content">
+                {{{content}}}
+            </div>
+
+            <img class="bottom-line" src="./images/bottom-line.png">
+        </a>
+    </div>
+    {{/each}}
+</div>
+
+<div class="row pagination-container no-gutters">
+    <div class="d-flex justify-content-start" id="previous">
+        <a href="#/home/category/?category={{category}}&pageNumber=1&pageSize={{pageSize}}">«</a>
     </div>
 
-    {{#if pagination}}
-    <div class="row pagination-container no-gutters">
-        <div class="d-flex justify-content-start" id="previous">
-            <a href="#/home/?pageNumber=1&pageSize={{pageSize}}">«</a>
-        </div>
-
-        <div class="col d-flex justify-content-center pages">
-            {{#each pageNumbers}}
-            <a href="#/home/?pageNumber={{this}}&pageSize={{../pageSize}}">{{this}}</a> {{/each}}
-        </div>
-
-        <div class="d-flex justify-content-end" id="next">
-            <a href="#/home/?pageNumber={{count}}&pageSize={{pageSize}}">»</a>
-        </div>
+    <div class="col d-flex justify-content-center pages">
+        {{#each pageNumbers}}
+        <a href="#/home/category/?category={{../category}}&pageNumber={{this}}&pageSize={{../pageSize}}">{{this}}</a> {{/each}}
     </div>
-    {{/if}}
+
+    <div class="d-flex justify-content-end" id="next">
+        <a href="#/home/category/?category={{category}}&pageNumber={{count}}&pageSize={{pageSize}}">»</a>
+    </div>
 </div>

@@ -1,27 +1,27 @@
-<div class="row articles-containter">
+<div class="row reviews-containter">
     {{#each reviews}}
-    <div class="col- articles-single-article">
+    <div class="col- reviews-single-review">
         <a href="#/home/review/{{authorUid}}{{title}}">
-            <div class="single-article-image-containter">
-                <div class="single-article-category">
+            <div class="single-review-image-containter">
+                <div class="single-review-category">
                     {{category}}
                 </div>
-                <img class="single-article-image" src="{{image}}" />
-                <div class="single-article-date">
+                <img class="single-review-image" src="{{image}}" />
+                <div class="single-review-date">
                     <span>{{month}}</span>
                     <span> {{day}}</span>
                 </div>
             </div>
 
-            <div class="single-article-title" title="{{{title}}}">
+            <div class="single-review-title" title="{{{title}}}">
                 {{{title}}}
             </div>
 
-            <div class="single-article-author">
+            <div class="single-review-author">
                 AUTHOR {{author}}
             </div>
 
-            <div class="single-article-content">
+            <div class="single-review-content">
                 {{{content}}}
             </div>
 
