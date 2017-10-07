@@ -95,6 +95,10 @@ a:visited {
   color: #dcc08e;
 }
 
+.dropdown-content a:hover .custom-style-type{
+  color: #9a1d0d
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -108,9 +112,9 @@ a:visited {
     font-family: Droid Sans, sans-serif;
     background: transparent url('../images/search.png') no-repeat scroll 100%;
     background-color: #F8F4F4;
-    border-bottom: 1px solid #AAA1A1!important;
-    border-right: 1px solid #938E8E!important;
-    text-shadow: 1px 1px #979090!important;
+    border-bottom: 1px solid #126A6E!important;
+    border-right: 1px solid #126A6E!important;
+    text-shadow: 1px 1px #126A6E!important;
     border-radius: 3px;
     width: 166px;
     margin: 10px;
@@ -125,27 +129,48 @@ a:visited {
     display: none!important
 }
 
-/* .ml-15 {
+.sitemap{
+  color:white;
+  margin-left: 20px;
+  font-family: 'Droid Sans', sans-serif !important;
+  text-shadow: 1px 1px black  !important;
+}
+
+.sitemap a{
+  color:white;
+}
+
+.breadcrumb{
+background-color: inherit;
+}
+
+.breadcrumb > li + li:before {
+  color:white !important;
+  content: " » " !important;
+  padding: 0 5px !important;
+}
+
+.ml-15 {
   margin-left: 15px!important
-} */
-.articles-containter {
+}
+.reviews-containter {
   margin-left: 25px;
   margin-top: 15px
 }
 
-.all-articles-container {
+.all-reviews-container {
   height: 400px;
   overflow-y: scroll
 }
 
-.articles-single-article {
+.reviews-single-review {
   background-color: #fff;
   box-shadow: 2px 2px #000;
   width: 230px;
   height: 350px;
   margin: 13px
 }
-.single-article-image-containter {
+.single-review-image-containter {
   z-index: 0;
   width: 220px;
   height: 150px;
@@ -154,58 +179,64 @@ a:visited {
   position: relative
 }
 
-.single-article-category {
-  font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
-  color: #fff;
-  text-shadow: 1px 1px #000;
-  letter-spacing: 2px;
-  background-color: #9a1d0d;
-  display: inline-block;
-  padding: 1px 2px 1px 3px;
-  position: absolute;
-  right: 0;
-  top: 0
+.da-category,
+.single-review-category {
+    font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+    letter-spacing: 2px;
+    background-color: #9a1d0d;
+    display: inline-block;
+    padding: 1px 2px 1px 3px;
+    position: absolute;
+    right: 0;
+    top: 0
 }
-.single-article-image {
+
+.single-review-image {
   width: 100%;
   height: 100%
 }
 
-.single-article-date {
-  font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
-  color: #fff;
-  text-shadow: 1px 1px 1px grey, -1px -1px 1px grey;
-  position: absolute;
-  font-size: 42px;
-  letter-spacing: 1px;
-  top: 20px;
-  right: 2px
+.da-date,
+.single-review-date {
+    font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
+    color: #fff;
+    text-shadow: 1px 1px 1px grey, -1px -1px 1px grey;
+    position: absolute;
+    font-size: 42px;
+    letter-spacing: 1px;
+    top: 20px;
+    right: 2px
 }
 
-.single-article-date span {
-  display: block
+.da-date span,
+.single-review-date span {
+    display: block
 }
 
-.single-article-date span:nth-child(2) {
-  text-align: right;
-  margin-top: -26px
+.da-date span:nth-child(2),
+.single-review-date span:nth-child(2) {
+    text-align: right;
+    margin-top: -26px
 }
-.single-article-title {
+
+.single-review-title {
   color: #9a1d0d;
   overflow: hidden;
   font-size: 32px;
   letter-spacing: 1px;
   margin-top: 5px
 }
-.single-article-author,
-.single-article-title {
+.single-review-author,
+.single-review-title {
   font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
   white-space: nowrap;
   text-overflow: ellipsis;
   padding-right: 15px;
   padding-left: 15px
 }
-.single-article-author {
+.single-review-author {
   color: #212121;
   font-size: 18px;
   letter-spacing: .5px;
@@ -213,7 +244,7 @@ a:visited {
   margin-bottom: 8px
 }
 
-.single-article-content {
+.single-review-content {
   font-family: Droid Sans, sans-serif;
   font-size: 13px;
   color: #7a7575;
@@ -224,13 +255,184 @@ a:visited {
   padding: 10px 10px 0 15px
 }
 
-.article-comments-container,
-.detailed-article-container {
+.review-comments-container,
+.detailed-review-container {
   background-color: #fff;
   -o-border-image: url('../images/bottom-line.png') 30 round;
   border-image: url('../images/bottom-line.png') 30 round;
   border-top: 9px solid;
   border-bottom: 9px solid
+}
+
+.review-comments-container,
+.detailed-review-container {
+    background-color: #fff;
+    -o-border-image: url('../images/bottom-line.png') 30 round;
+    border-image: url('../images/bottom-line.png') 30 round;
+    border-top: 9px solid;
+    border-bottom: 9px solid
+}
+.review-comments-container {
+    margin-top: 20px;
+    padding-left: 40px;
+    width: 1050px
+}
+.comments-count {
+    font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
+    color: #9a1d0d;
+    letter-spacing: 1px;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.da-details {
+  width: 250px;
+  margin-bottom: 40px
+}
+.da-image-container {
+  width: 185px;
+  height: 185px
+}
+.da-image {
+  width: 100%;
+  height: 100%;
+  z-index: 1000
+}
+.da-image-container {
+  box-shadow: 0 0 5px 2px grey;
+  position: relative;
+  margin-top: 25px;
+  margin-left: 30px
+}
+
+.da-content-container {
+  margin-top: 15px
+}
+.da-content-container h1 {
+  color: #9a1d0d;
+  letter-spacing: 1px
+}
+.da-author,
+.da-content-container h1 {
+  font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif
+}
+.da-author {
+  color: #212121;
+  font-size: 20px
+}
+.da-content {
+  width: 1000px;
+  font-family: Droid Sans, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding-top: 15px;
+  border-top: 1px dotted #a6a6a6;
+  color: #7a7575
+}
+.bottom-line {
+  position: absolute
+}
+
+.comments-list-item {
+  margin-bottom: 20px;
+  width: 980px;
+  position: relative;
+  padding-bottom: 30px
+}
+
+.comment-item-info {
+  width: 130px
+}
+
+.image-large {
+  width: 800px;
+  height: 500px
+}
+.comment-item-image-container {
+  box-shadow: 0 0 5px 2px grey;
+  margin-top: 40px;
+  position: relative;
+  width: 100px;
+  height: 100px
+}
+
+.comment-author-avatar {
+  width: 100%;
+  height: 100%
+}
+.comment-date {
+  font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
+  color: #fff;
+  text-shadow: 1px 1px 1px grey, -1px -1px 1px grey;
+  position: absolute;
+  font-size: 28px;
+  letter-spacing: 1px;
+  top: 0;
+  right: 2px
+}
+.comment-date span {
+  display: block
+}
+.comment-date span:nth-child(2) {
+  text-align: right;
+  margin-top: -16px
+}
+.comment-item-contnet-container {
+  margin-top: 25px
+}
+.comment-item-contnet-container h4 {
+  font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
+  color: #2c2c2c
+}
+
+.comment-item-content {
+  width: 850px
+}
+.comment-item-content {
+  font-family: Droid Sans, sans-serif;
+  color: #7a7575;
+  margin-top: -10px;
+  height: auto;
+  word-wrap: break-word
+}
+
+.rc-custom-form {
+  width: 401px
+}
+.rc-custom-form div {
+  text-align: right;
+  margin-top: 5px
+}
+.rc-custom-form div input {
+  font-family: Droid Sans, sans-serif;
+  color: #126A6E;
+  padding: 10px 13px;
+  border: none;
+  cursor: pointer
+}
+.add-comment-container {
+  margin-bottom: 20px;
+  border-top: 1px dotted #126A6E;
+  width: 980px
+}
+.add-comment-container .rc-custom-form {
+  width: 501px
+}
+.add-comment-container div:first-child {
+  font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
+  color: #9a1d0d;
+  letter-spacing: 1px;
+  font-size: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+.add-comment-container textarea {
+  border: 1px solid #126A6E;
+  width: 500px;
+  box-shadow: inset 2px 2px 1px #e6e5e5;
+  background-color: #f6f6f6;
+  resize: none
 }
 
 #signin-form,
