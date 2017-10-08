@@ -1,14 +1,14 @@
-import { userController } from 'user-controller';
-import { userControl } from 'user-controls';
 import { reviewController } from 'review-controller';
+import { userControl } from 'user-controls';
+import { userController } from 'user-controller';
 
 class Router {
     start() {
         let sammy = Sammy(function () {
-            this.get('#/', (sammy) => {
-                sammy.redirect('#/home');
+            this.get('#/home', (sammy) => {
+                sammy.redirect('#/home/?page=1&pageSize=5');
             });
-            this.get('#/home', reviewController.loadHomePage);
+            this.get('#/home/?', reviewController.loadHomePage);
 
             // Category routes
             this.get('#/home/category/?', reviewController.loadCategory);
@@ -20,7 +20,7 @@ class Router {
             this.get('#/sign-in', userController.loadSignInPage);
             this.post('#/sign-in', userController.signIn);
             this.get('#/sign-out', userController.signOut);
-            this.get('#/home/profile/change-avatar', userController.loadProfilePicture)
+            this.get('#/home/profile/change-avatar', userController.loadProfilePicture);
             this.post('#/home/profile/change-avatar', userController.changeAvatar);
             this.get('#/home/profile/password-reset', userController.loadProfilePassword);
 
@@ -33,7 +33,7 @@ class Router {
         });
 
         $(function () {
-            sammy.run('#/');
+            sammy.run('#/home');
         });
     }
 }

@@ -19,6 +19,7 @@ SystemJS.config({
         'template-handler': '../scripts/utils/template.handler.js',
         'user-controls': '../scripts/utils/user.control.js',
         'validator': '../scripts/utils/validator.js',
+        'review-sort': '../scripts/utils/reviews.sort.js',
 
         // models
         'user-model': '../scripts/data/models/user.model.js',

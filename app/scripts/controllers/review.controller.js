@@ -4,6 +4,7 @@ import { validator } from 'validator';
 import { uploadImg } from 'img-upload';
 import { htmlHandler } from 'html-handler';
 import { templateHandler } from 'template-handler';
+import { reviewSort } from 'review-sort';
 import { userControl } from 'user-controls';
 
 class ReviewController {
@@ -23,7 +24,7 @@ class ReviewController {
                     });
 
             } else {
-                sammy.redirect('#/');
+                sammy.redirect('#/home');
             }
         });
     }
@@ -52,26 +53,41 @@ class ReviewController {
     }
 
     loadHomePage(sammy) { 
-        const pageSize = 5;
-        const page = 1;
+        const pageSize = sammy.params.pageSize;
+        const page = sammy.params.page;
         
         reviewModel.getAllReviews()
             .then((reviews) => {
-                // will be moved to utils folder
-                // let filteredReviews = [];
-                // for(let i = (page - 1)*pageSize; i < page*pageSize; i++) {
-                //  filteredReviews.push(reviews[Object.keys(reviews)[i]]);
-                // }
-                templateHandler.setTemplate('home.template', '#content', {reviews: reviews});
+                const countPages = Math.round(Object.keys(reviews).length/pageSize);
+                const pageNumbers = Array.from({ length: countPages }, (v, i) => i + 1);
+                let sortedReviews = reviewSort.sortByDate(reviews);
+                console.log(sortedReviews);
+                let filteredReviews = reviewSort.sortByPageAndPageSize(page, pageSize, sortedReviews);
+                console.log(filteredReviews);
+                templateHandler.setTemplate('home.template', '#content', {reviews: filteredReviews, countPages, pageNumbers, pageSize, pagination: true});
             }).catch((err) => {
                 console.log(err);
             });
     }
 
     loadCategory(sammy) {
+        const pageSize = sammy.params.pageSize;
+        const page = sammy.params.page;
+        const category = sammy.params.category;
+
         reviewModel.getReviews({prop: 'category', value: sammy.params.category})
             .then((reviews) => {
-                templateHandler.setTemplate('category.template', '#content', {reviews: reviews, category: sammy.params.category });
+                let pagination = false;
+                const countPages = Math.round(Object.keys(reviews).length/pageSize);
+                const pageNumbers = Array.from({ length: countPages }, (v, i) => i + 1);
+                let sortedReviews = reviewSort.sortByDate(reviews);
+                let filteredReviews = reviewSort.sortByPageAndPageSize(page, pageSize, sortedReviews);
+
+                if(countPages > 1) {
+                    pagination = true;
+                }
+
+                templateHandler.setTemplate('category.template', '#content', {reviews: filteredReviews, category, countPages, pageSize, pagination });
             }).catch((err) => {
                 console.log(err);
             });

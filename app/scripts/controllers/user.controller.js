@@ -23,7 +23,7 @@ class UserController {
                     });
 
             } else {
-                sammy.redirect('#/');
+                sammy.redirect('#/home');
             }
         });
     }
@@ -37,7 +37,7 @@ class UserController {
                     });
 
             } else {
-                sammy.redirect('#/');
+                sammy.redirect('#/home');
             }
         });
     }
@@ -53,7 +53,7 @@ class UserController {
                     });
 
             } else {
-                sammy.redirect('#/');
+                sammy.redirect('#/home');
             }
         });
     }
@@ -70,7 +70,7 @@ class UserController {
                     });
 
             } else {
-                sammy.redirect('#/');
+                sammy.redirect('#/home');
             }
         });
     }
@@ -96,7 +96,7 @@ class UserController {
                             displayName: sammy.params.username,
                             photoURL: imgUrl,
                         }).then(() =>{
-                            sammy.redirect('#/');
+                            sammy.redirect('#/home');
                         }).catch((err) => {
                             console.log(err.msg);
                         });
@@ -119,7 +119,7 @@ class UserController {
             .then(() => {
                 console.log('user signed in');
                 userControl.toggleUserControlElement();
-                sammy.redirect('#/');
+                sammy.redirect('#/home');
             })
             .catch(error => {
                 console.log(error.message);
@@ -134,7 +134,7 @@ class UserController {
             .then(() => {
                 console.log('you are now loged off');
                 userControl.toggleUserControlElement();
-                sammy.redirect('#/');
+                sammy.redirect('#/home');
             }).catch((err) => {
                 console.log(err);
             });
