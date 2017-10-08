@@ -24,13 +24,16 @@ class ReviewSort {
 
     sortByPageAndPageSize(page, pageSize, reviews) {
         let filteredReviews = [];
+        let length = Object.keys(reviews).length;
 
-        if(pageSize > Object.keys(reviews).length) {
-            pageSize = Object.keys(reviews).length;
+        if(pageSize > length) {
+            pageSize = length;
         }
 
         for(let i = (page - 1)*pageSize; i < page*pageSize; i++) {
-            filteredReviews.push(reviews[Object.keys(reviews)[i]]);
+            if( i < length) {
+                filteredReviews.push(reviews[Object.keys(reviews)[i]]);
+            }
         }
 
         return filteredReviews;

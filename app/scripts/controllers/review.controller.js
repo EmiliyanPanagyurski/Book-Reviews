@@ -58,12 +58,10 @@ class ReviewController {
         
         reviewModel.getAllReviews()
             .then((reviews) => {
-                const countPages = Math.round(Object.keys(reviews).length/pageSize);
+                const countPages = Math.ceil(Object.keys(reviews).length/pageSize);
                 const pageNumbers = Array.from({ length: countPages }, (v, i) => i + 1);
                 let sortedReviews = reviewSort.sortByDate(reviews);
-                console.log(sortedReviews);
                 let filteredReviews = reviewSort.sortByPageAndPageSize(page, pageSize, sortedReviews);
-                console.log(filteredReviews);
                 templateHandler.setTemplate('home.template', '#content', {reviews: filteredReviews, countPages, pageNumbers, pageSize, pagination: true});
             }).catch((err) => {
                 console.log(err);
