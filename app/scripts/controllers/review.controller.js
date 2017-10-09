@@ -35,11 +35,11 @@ class ReviewController {
                     authorUid: user.uid,
                     image: response.data.link,
                     category: $('#category').val(),
-                    title: sammy.params.title.toLowerCase(),
+                    title: sammy.params.title,
                     content: sammy.params.content,
                     month: months[date.getMonth()],
                     day: date.getDate(),
-                    bookTitle: sammy.params.bookTitle.toUpperCase()
+                    bookTitle: $('#bookTitle').val().toUpperCase()
                 };
 
                 reviewModel.create(formData);
