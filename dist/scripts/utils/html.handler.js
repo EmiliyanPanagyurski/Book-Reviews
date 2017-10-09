@@ -1,0 +1,1 @@
+const HTMLS_PATH="../../views/";class HtmlHandler{getHtml(t){let e=`../../views/${t}.html`;return new Promise((t,l)=>{$.get(e).done(t).fail(l)})}setHtml(t,e){return e=e||"#content",this.getHtml(t).then(t=>{$(e).html(t)}).catch(console.log)}}const htmlHandler=new HtmlHandler;export{htmlHandler};

@@ -1,0 +1,1 @@
+const clientId="cb5cf831126a0dd",uploadUrl="https://api.imgur.com/3/image";class ImageUpload{uploadToApi(a){return new Promise((e,o)=>{$.ajax({url:uploadUrl,type:"POST",headers:{Authorization:"Client-ID "+clientId},data:a,success:e,error:o,processData:!1})})}}const uploadImg=new ImageUpload;export{uploadImg};

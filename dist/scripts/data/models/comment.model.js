@@ -1,0 +1,1 @@
+import{dataBase}from"database";class CommentModel{constructor(e){this.dataBase=e}create(e){this.dataBase.createComment(e)}getCurrentUser(){return this.dataBase.getCurrentUser()}getComments(e){return this.dataBase.getComments(e)}}const commentModel=new CommentModel(dataBase);export{commentModel};
