@@ -6,13 +6,6 @@ import { userModel } from 'user-model';
 import { validator } from 'validator';
 
 class UserController {
-    constructor(userModel, uploadImg, htmlHandler, userControl) {
-        this.utils = uploadImg;
-        this.userModel = userModel;
-        this.htmlHandler = htmlHandler;
-        this.userControl = userControl;
-    }
-
     loadSignUpPage(sammy) {
         // to prevent unauthorized entry check for loged in user if not redirect 
         userModel.isUserLoggedIn().then((isLoggedIn) => {
@@ -168,6 +161,6 @@ class UserController {
     }
 }
 
-const userController = new UserController(userModel, uploadImg, htmlHandler, userControl);
+const userController = new UserController();
 
 export { userController };

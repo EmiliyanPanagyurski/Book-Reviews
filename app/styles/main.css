@@ -344,10 +344,7 @@ background-color: inherit;
   width: 130px
 }
 
-.image-large {
-  width: 800px;
-  height: 500px
-}
+
 .comment-item-image-container {
   box-shadow: 0 0 5px 2px grey;
   margin-top: 40px;
@@ -432,6 +429,11 @@ background-color: inherit;
   box-shadow: inset 2px 2px 1px #e6e5e5;
   background-color: #f6f6f6;
   resize: none
+}
+
+.image-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .avatar-input {
@@ -582,10 +584,6 @@ footer {
       position: absolute;
       top: 20px;
       right: 0
-  }
-
-  .navbar-toggler.navbar-toggler-right {
-      display: block;
   }
   
   .navbar-collapse {

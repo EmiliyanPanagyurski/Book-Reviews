@@ -8,12 +8,6 @@ import { userControl } from 'user-controls';
 import { validator } from 'validator';
 
 class ReviewController {
-    constructor(reviewModel, commentModel, validator, uploadImg, htmlHandler) {
-        this.reviewModel = reviewModel;
-        this.commentModel = commentModel;
-        this.validator = validator;
-        this.uploadImg = uploadImg;
-    }
 
     loadCreateReviewPage(sammy) {
         reviewModel.isUserLoggedIn().then((isLoggedIn) => {
@@ -176,6 +170,6 @@ class ReviewController {
     }
 }
 
-const reviewController = new ReviewController(reviewModel, commentModel, validator, uploadImg);
+const reviewController = new ReviewController();
 
 export { reviewController };
