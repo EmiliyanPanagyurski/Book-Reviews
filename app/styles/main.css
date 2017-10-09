@@ -566,30 +566,32 @@ footer {
       display: none
   }
   #content {
-      margin-left: 45px
+      margin-left: 45px;
+      margin-top: 75px;
+      width: auto;
   }
   header {
-      height: 100px
+      height: 150px
   }
   .logo-holder {
       top: 0;
-      width: 500px
+      width: 500px;
   }
   .logo-holder img {
       margin-left: 55px;
       margin-top: 5px;
-      width: 500px
+      width: auto
   }
   .navbar {
-      position: absolute;
+      position: relative;
       top: 20px;
-      right: 0
+      right: 0;
   }
   
   .navbar-collapse {
       z-index: 1;
       margin-top: 65px;
-      background-color: #126A6E;
+      background-color: transparent;
   }
   .nav-item {
       margin-left: 10px;
@@ -618,11 +620,14 @@ footer {
   }
 
   #content {
-      margin-left: 45px
+      margin-left: 45px;
+      margin-top: 75px;
+      width: auto;
   }
   header {
       height: 100px
   }
+
   .logo-holder {
       top: 0;
       width: 500px
@@ -630,12 +635,12 @@ footer {
   .logo-holder img {
       margin-left: 55px;
       margin-top: 5px;
-      width: 500px
+      width: auto
   }
   .navbar-collapse {
       z-index: 1;
       margin-top: 65px;
-      background-color: #126A6E
+      background-color: transparent;
   }
 }
 @media (max-width: 660px) {
@@ -643,15 +648,19 @@ footer {
       width: 576px!important;
       margin: 0!important
   }
+
   footer {
       width: 660px!important
   }
   #content {
-      margin-left: 15px
+      margin-left: 15px;
+      margin-top: 75px;
+      width: auto;
   }
   header {
-      height: 100px!important
+      height: 100px!important;
   }
+
   .logo-holder {
       top: 0;
       width: 400px!important
@@ -659,14 +668,38 @@ footer {
   .logo-holder img {
       margin-left: 15px;
       margin-top: 5px;
-      width: 400px!important
+      width: auto!important
   }
+
+  .review-comments-container {
+    width: 500px!important
+  }
+.comments-list-item {
+    width: 450px!important
+  }
+.comment-item-contnet-container {
+    width: 450px!important
+}
+
   .navbar-collapse {
       z-index: 1;
       margin-top: 65px;
-      background-color: #126A6E
+      background-color: transparent
   }
 }
+
+@media (max-width: 576px) {
+    .navbar {
+        position: absolute;
+    }
+
+    .navbar-collapse {
+        z-index: 1;
+        margin-top: 45px;
+        background-color: #126A6E
+    }
+}
+
 @media (max-width: 375px) {
   body {
       margin: 0
@@ -705,7 +738,8 @@ footer {
       width: 250px!important
   }
   #content {
-      margin-left: 30px
+      margin-left: 30px;
+      width: auto;
   }
   header {
       height: 50px
@@ -739,7 +773,8 @@ footer {
       width: 360px
   }
   #content {
-      margin-left: 30px
+      margin-left: 30px;
+      width: auto;
   }
   header {
       height: 50px
