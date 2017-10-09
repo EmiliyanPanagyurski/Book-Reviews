@@ -8,15 +8,15 @@ class ImageUpload {
                 url: uploadUrl,
                 type: 'POST',
                 headers: {
-                    'Authorization': 'Client-ID ' + clientId,
+                    'Authorization': 'Client-ID ' + clientId
                 },
                 data: file,
                 success: resolve,
                 error: reject,
-                processData: false,
+                processData: false
             });
         });
-    };
+    }
 }
 
 const uploadImg = new ImageUpload();

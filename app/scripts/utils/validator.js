@@ -8,12 +8,12 @@ class Validator {
                 },
                 password: {
                     required: true,
-                    minlength: 6,
+                    minlength: 6
                 }
             },
             highlight: function (element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
-            },
+            }
         });
     }
 
@@ -26,19 +26,19 @@ class Validator {
                 },
                 password: {
                     required: true,
-                    minlength: 6,
+                    minlength: 6
                 },
                 confirmedPassword: {
-                    equalTo: '#password',
+                    equalTo: '#password'
                 },
                 username: {
                     required: true,
-                    minlength: 3,
+                    minlength: 3
                 }
             },
             highlight: function (element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
-            },
+            }
         });
     }
 
@@ -47,20 +47,20 @@ class Validator {
             rules: {
                 title: {
                     required: true,
-                    minlength: 5,
+                    minlength: 5
                 },
                 bookTitle: {
                     required: true,
-                    minlength: 5,
+                    minlength: 5
                 },
                 content: {
                     required: true,
-                    minlength: 100,
-                },
+                    minlength: 100
+                }
             },
             highlight: function (element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
-            },
+            }
         });
     }
 }

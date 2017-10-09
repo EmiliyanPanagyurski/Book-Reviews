@@ -1,8 +1,8 @@
-import { userModel } from 'user-model';
-import { uploadImg } from 'img-upload';
 import { htmlHandler } from 'html-handler';
 import { templateHandler } from 'template-handler';
+import { uploadImg } from 'img-upload';
 import { userControl } from 'user-controls';
+import { userModel } from 'user-model';
 import { validator } from 'validator';
 
 class UserController {
@@ -32,7 +32,7 @@ class UserController {
         userModel.isUserLoggedIn().then((isLoggedIn) => {
             if (!isLoggedIn) {
                 htmlHandler.setHtml('sign-in', '#content')
-                    .then(()=> {
+                    .then(() => {
                         validator.validateSignIn();
                     });
 
@@ -48,7 +48,7 @@ class UserController {
         userModel.isUserLoggedIn().then((isLoggedIn) => {
             if (isLoggedIn) {
                 templateHandler.setTemplate('profile.avatar.template', '#content', { image: user.photoURL })
-                    .then(()=> {
+                    .then(() => {
                         // TODO VALIDATIONS
                     });
 
@@ -62,7 +62,7 @@ class UserController {
         userModel.isUserLoggedIn().then((isLoggedIn) => {
             if (isLoggedIn) {
                 htmlHandler.setHtml('profile-password', '#content')
-                    .then(()=> {
+                    .then(() => {
                         $('#password-reset').click(function() {
                             let user = userModel.getCurrentUser();
                             userModel.resetPassword(user.email);
@@ -78,7 +78,7 @@ class UserController {
     signUp(sammy) {
         const formData = {
             email: sammy.params.email,
-            password: sammy.params.password,
+            password: sammy.params.password
         };
         let imgUrl = '';
 
@@ -94,8 +94,8 @@ class UserController {
 
                         userModel.updateProfile({
                             displayName: sammy.params.username,
-                            photoURL: imgUrl,
-                        }).then(() =>{
+                            photoURL: imgUrl
+                        }).then(() => {
                             sammy.redirect('#/home');
                         }).catch((err) => {
                             console.log(err.msg);
@@ -111,7 +111,7 @@ class UserController {
     signIn(sammy) {
         const formData = {
             email: sammy.params.email,
-            password: sammy.params.password,
+            password: sammy.params.password
         };
 
         userModel
@@ -149,8 +149,8 @@ class UserController {
             imgUrl = response.data.link;
             userModel.updateProfile({
                 displayName: user.displayName,
-                photoURL: imgUrl,
-            }).then(() =>{
+                photoURL: imgUrl
+            }).then(() => {
                 sammy.redirect('#/home/profile/change-avatar');
             }).catch((err) => {
                 console.log(err.message);

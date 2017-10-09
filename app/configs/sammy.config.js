@@ -8,7 +8,9 @@ class Router {
             this.get('#/home', (sammy) => {
                 sammy.redirect('#/home/?page=1&pageSize=5');
             });
+
             this.get('#/home/?', reviewController.loadHomePage);
+            this.get('#/home/search/?', reviewController.searchByTitle);
 
             // Category routes
             this.get('#/home/category/?', reviewController.loadCategory);

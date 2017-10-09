@@ -1,11 +1,11 @@
-import { reviewModel } from 'review-model';
 import { commentModel } from 'comment-model';
-import { validator } from 'validator';
-import { uploadImg } from 'img-upload';
 import { htmlHandler } from 'html-handler';
-import { templateHandler } from 'template-handler';
+import { reviewModel } from 'review-model';
 import { reviewSort } from 'review-sort';
+import { templateHandler } from 'template-handler';
+import { uploadImg } from 'img-upload';
 import { userControl } from 'user-controls';
+import { validator } from 'validator';
 
 class ReviewController {
     constructor(reviewModel, commentModel, validator, uploadImg, htmlHandler) {
@@ -41,10 +41,11 @@ class ReviewController {
                     authorUid: user.uid,
                     image: response.data.link,
                     category: $('#category').val(),
-                    title: sammy.params.title,
+                    title: sammy.params.title.toLowerCase(),
                     content: sammy.params.content,
                     month: months[date.getMonth()],
                     day: date.getDate(),
+                    bookTitle: sammy.params.bookTitle.toUpperCase()
                 };
 
                 reviewModel.create(formData);
@@ -52,10 +53,10 @@ class ReviewController {
             });
     }
 
-    loadHomePage(sammy) { 
+    loadHomePage(sammy) {
         const pageSize = sammy.params.pageSize;
         const page = sammy.params.page;
-        
+
         reviewModel.getAllReviews()
             .then((reviews) => {
                 const countPages = Math.ceil(Object.keys(reviews).length/pageSize);
@@ -76,7 +77,7 @@ class ReviewController {
         reviewModel.getReviews({prop: 'category', value: sammy.params.category})
             .then((reviews) => {
                 let pagination = false;
-                const countPages = Math.round(Object.keys(reviews).length/pageSize);
+                const countPages = Math.ceil(Object.keys(reviews).length/pageSize);
                 const pageNumbers = Array.from({ length: countPages }, (v, i) => i + 1);
                 let sortedReviews = reviewSort.sortByDate(reviews);
                 let filteredReviews = reviewSort.sortByPageAndPageSize(page, pageSize, sortedReviews);
@@ -114,19 +115,19 @@ class ReviewController {
             .then(() => {
                 return commentModel.getComments({prop: 'review', value: review.authorUid + review.title});
             })
-            .then((comments) => { 
+            .then((comments) => {
                 let commentsCount = 0;
-                
+
                 if(comments) {
                     commentsCount = Object.keys(comments).length;
                 }
 
-                templateHandler.setTemplate('review.template', '#content', { 
+                templateHandler.setTemplate('review.template', '#content', {
                     review: review,
                     comments: comments,
                     commentsCount: commentsCount,
                     isLoged: isLoged,
-                    category: review.category.toLowerCase(),
+                    category: review.category.toLowerCase()
                 });
             }).catch((err) => {
                 console.log(err);
@@ -144,11 +145,34 @@ class ReviewController {
             content: $('#comment-box').val(),
             review: sammy.params.id,
             month: months[date.getMonth()],
-            day: date.getDate(),
+            day: date.getDate()
         };
 
         commentModel.create(comment);
         sammy.redirect('#/home/review/' + sammy.params.id);
+    }
+
+    searchByTitle(sammy) {
+        const query = $('#search-box').val();
+        const page = sammy.params.page;
+        const pageSize = sammy.params.pageSize;
+
+        reviewModel.getReviews({
+            prop: 'bookTitle',
+            value: query
+        }).then((foundReviews) => {
+            let pagination = false;
+            const countPages = Math.ceil(Object.keys(foundReviews).length/pageSize);
+            const pageNumbers = Array.from({ length: countPages }, (v, i) => i + 1);
+            let sortedReviews = reviewSort.sortByDate(foundReviews);
+            let filteredReviews = reviewSort.sortByPageAndPageSize(page, pageSize, sortedReviews);
+
+            if(countPages > 1) {
+                pagination = true;
+            }
+
+            templateHandler.setTemplate('search.result.template', '#content', {reviews: filteredReviews, countPages, pageNumbers, pageSize, pagination });
+        });
     }
 }
 

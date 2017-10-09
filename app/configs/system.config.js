@@ -28,7 +28,7 @@ SystemJS.config({
 
         //controllers
         'user-controller': '../scripts/controllers/user.controller.js',
-        'review-controller': '../scripts/controllers/review.controller.js',
+        'review-controller': '../scripts/controllers/review.controller.js'
 
     },
     packages: {

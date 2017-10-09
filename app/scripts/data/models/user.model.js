@@ -15,7 +15,7 @@ class UserModel {
     signOut() {
         return this.dataBase.signOut();
     }
-    
+
     getCurrentUser() {
         return this.dataBase.getCurrentUser();
     }

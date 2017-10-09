@@ -26,7 +26,7 @@ class ReviewModel {
     getReviews(query) {
         return this.dataBase.getReviews(query);
     }
-    
+
     getReview(query) {
         return this.dataBase.getReview(query);
     }
