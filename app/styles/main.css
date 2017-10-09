@@ -112,14 +112,13 @@ a:visited {
     font-family: Droid Sans, sans-serif;
     background: transparent url('../images/search.png') no-repeat scroll 100%;
     background-color: #F8F4F4;
-    border-bottom: 1px solid #126A6E!important;
-    border-right: 1px solid #126A6E!important;
-    text-shadow: 1px 1px #126A6E!important;
+    border-bottom: 1px solid black!important;
+    border-right: 1px solid black!important;
     border-radius: 3px;
     width: 166px;
     margin: 10px;
     height: 28px;
-    color: #121111;
+    color: black;
     font-size: 11px;
     font-weight: 700;
     font-style: italic;
@@ -433,6 +432,25 @@ background-color: inherit;
   box-shadow: inset 2px 2px 1px #e6e5e5;
   background-color: #f6f6f6;
   resize: none
+}
+
+.avatar-input {
+    background: transparent;
+    color: white;
+}
+
+.profile-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+#password-reset {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 #signin-form,
