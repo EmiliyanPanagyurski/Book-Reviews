@@ -1,6 +1,6 @@
 /*vscode*/
 /*node_modules*/
 /*functions*/
-/*.firebserc*/
-/*database.rules.json*/
-/*firebase.json*/
+.firebaserc
+database.rules.json
+firebase.json

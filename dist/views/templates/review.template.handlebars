@@ -8,7 +8,7 @@
 
 <div class="detailed-review-container">
     <div class="row no-gutters">
-        <div class="col- da-details">
+        <div class="col da-details">
             <div class="da-image-container">
 
                 <div class="da-category">
@@ -21,9 +21,39 @@
                 </div>
 
             </div>
+            <div class="da-share-icons-container">
+                <h3>SHARE THIS</h3>
+                <span>
+                    <a>
+                     <img src="./images/share-icon1.png">
+                    </a>
+                </span>
+
+                <span>
+                    <a>
+                     <img src="./images/share-icon2.png">
+                    </a>
+                </span>
+
+                <span>
+                    <a>
+                     <img src="./images/share-icon3.png">
+                    </a>
+                </span>
+                <span>
+                    <a>
+                     <img src="./images/share-icon4.png">
+                    </a>
+                </span>
+                <span>
+                    <a>
+                     <img src="./images/share-icon5.png">
+                    </a>
+                </span>
+            </div>
         </div>
 
-        <div class="col- da-content-container">
+        <div class="col da-content-container">
             <h1>{{review.title}}</h1>
 
             <div class="da-author">
@@ -47,7 +77,7 @@
         <div class="comments-list-container">
             {{#each comments}}
             <div class="comments-list-item row no-gutters">
-                <div class="col- comment-item-info">
+                <div class="col comment-item-info">
                     <div class="comment-item-image-container">
                         <img class="comment-author-avatar" src="{{image}}">
                         <div class="comment-date">
@@ -56,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col- comment-item-contnet-container">
+                <div class="col comment-item-contnet-container">
                     <h4>{{author}}</h4>
                     <div class="comment-item-content">
                         {{content}}
