@@ -6,7 +6,7 @@ class Router {
     start() {
         let sammy = Sammy(function () {
             this.get('#/home', (sammy) => {
-                sammy.redirect('#/home/?page=1&pageSize=5');
+                sammy.redirect('#/home/?page=1&pageSize=12');
             });
 
             this.get('#/home/?', reviewController.loadHomePage);

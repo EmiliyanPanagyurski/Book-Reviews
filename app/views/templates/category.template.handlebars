@@ -1,42 +1,80 @@
 <div class="sitemap">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#/home">Home</a></li>
-        <li class="breadcrumb-item">{{category}}</li>
+        <li class="breadcrumb-item"><a>{{category}}</a></li>
 
     </ol>
 </div>
 
 <div class="row reviews-containter">
-    {{#each reviews}}
-    <div class="col- reviews-single-review">
-        <a href="#/home/review/{{authorUid}}{{title}}">
-            <div class="single-review-image-containter">
-                <div class="single-review-category">
-                    {{category}}
+    <div class="col-ts-12 col-sm-6 col-md-8 col-lg-9 category-review-container">
+        <div class="row">
+            {{#each reviews}}
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="reviews-single-review">
+                    <a href="#/home/review/{{authorUid}}{{title}}">
+                        <div class="single-review-image-containter">
+                            <div class="single-review-category">
+                                {{category}}
+                            </div>
+                            <img class="single-review-image" src="{{image}}" />
+                            <div class="single-review-date">
+                                <span>{{month}}</span>
+                                <span> {{day}}</span>
+                            </div>
+                        </div>
+
+                        <div class="single-review-title">
+                            {{{title}}}
+                        </div>
+
+                        <div class="single-review-author">
+                            AUTHOR {{author}}
+                        </div>
+
+                        <div class="single-review-content">
+                            {{{substr '90' content}}}
+                        </div>
+
+                        <div class="botom-line"></div>
+                    </a>
                 </div>
-                <img class="single-review-image" src="{{image}}" />
-                <div class="single-review-date">
-                    <span>{{month}}</span>
-                    <span> {{day}}</span>
-                </div>
             </div>
-
-            <div class="single-review-title">
-                {{{title}}}
-            </div>
-
-            <div class="single-review-author">
-                AUTHOR {{author}}
-            </div>
-
-            <div class="single-review-content">
-                {{{content}}}
-            </div>
-
-            <img class="bottom-line" src="./images/bottom-line.png">
-        </a>
+            {{/each}}
+        </div>
     </div>
-    {{/each}}
+    <aside class="col-ts-12 col-sm-6 col-md-4 col-lg-3 sidebar-widgets-container">
+        <section class="sidebar-widget-container">
+            <div class="recent-comments-container">
+                <h3>Recent comments</h3>
+                <div class="sidebar-widget-content-divider"></div>
+                <div class="sidebar-widget-links-container">
+                    <a href="#/home">Fusce suscipit sapien sit amet</a><br />
+                    <a href="#/home">Sapien placerat ultrices vivamus</a><br />
+                    <a href="#/home">Massa ac metus gravida</a><br />
+                    <a href="#/home">Posuere lorem sed ipsum urna</a><br />
+                    <a href="#/home">Quis eleifend ut sodales sed</a><br />
+                    <a href="#/home">Integer felis eu ipsum malesuada</a><br />
+                </div>
+            </div>
+            <div class="botom-line"></div>
+        </section>
+        <section class="sidebar-widget-container">
+            <div class="recent-posts-container">
+                <h3>Recent posts</h3>
+                <div class="sidebar-widget-content-divider"></div>
+                <div class="sidebar-widget-links-container">
+                     <a href="#/home">Fusce suscipit sapien sit amet</a><br />
+                    <a href="#/home">Sapien placerat ultrices vivamus</a><br />
+                    <a href="#/home">Massa ac metus gravida</a><br />
+                    <a href="#/home">Posuere lorem sed ipsum urna</a><br />
+                    <a href="#/home">Quis eleifend ut sodales sed</a><br />
+                    <a href="#/home">Integer felis eu ipsum malesuada</a><br />
+                </div>
+            </div>
+            <div class="botom-line"></div>
+        </section>
+    </aside>
 </div>
 
 {{#if pagination}}
@@ -47,8 +85,7 @@
 
     <div class="col d-flex justify-content-center pages">
         {{#each pageNumbers}}
-        <a href="#/home/category/?category={{../category}}&page={{this}}&pageSize={{../pageSize}}">{{this}}</a>
-        {{/each}}
+        <a href="#/home/category/?category={{../category}}&page={{this}}&pageSize={{../pageSize}}">{{this}}</a> {{/each}}
     </div>
 
     <div class="d-flex justify-content-end" id="next">

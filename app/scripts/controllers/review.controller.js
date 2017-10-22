@@ -1,4 +1,5 @@
 import { commentModel } from 'comment-model';
+import { handlebarsSubstr} from 'handlebars-substr';
 import { htmlHandler } from 'html-handler';
 import { reviewModel } from 'review-model';
 import { reviewSort } from 'review-sort';
@@ -80,7 +81,7 @@ class ReviewController {
                     pagination = true;
                 }
 
-                templateHandler.setTemplate('category.template', '#content', {reviews: filteredReviews, category, countPages, pageSize, pagination });
+                templateHandler.setTemplate('category.template', '#content', {reviews: filteredReviews, category, countPages, pageSize, pagination, activePage: page });
             }).catch((err) => {
                 console.log(err);
             });
@@ -147,7 +148,8 @@ class ReviewController {
     }
 
     searchByTitle(sammy) {
-        const query = $('#search-box').val();
+        const query = $('#search-input').val();
+        console.log(query);
         const page = sammy.params.page;
         const pageSize = sammy.params.pageSize;
 
@@ -155,6 +157,7 @@ class ReviewController {
             prop: 'bookTitle',
             value: query
         }).then((foundReviews) => {
+            console.log(foundReviews);
             let pagination = false;
             const countPages = Math.ceil(Object.keys(foundReviews).length/pageSize);
             const pageNumbers = Array.from({ length: countPages }, (v, i) => i + 1);

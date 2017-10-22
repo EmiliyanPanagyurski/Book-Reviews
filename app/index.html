@@ -27,26 +27,23 @@
               <a class="nav-link nav-link-active" href="#/home">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/home/category/?category=biographies&page=1&pageSize=5">BIOGRAPHIES</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/home/category/?category=fantasy&page=1&pageSize=5">FANTASY</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/home/category/?category=science-fiction&page=1&pageSize=5">SCIENCE FICTION</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/home/category/?category=mystery&page=1&pageSize=5">MYSTERY</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/home/category/?category=romance&page=1&pageSize=5">ROMANCE</a>
+              <div class="nav-link dropdown">
+                  <a class="dropbtn">CATEGORIES</a>
+                  <div class="dropdown-content">
+                      <a class="nav-link" href="#/home/category/?category=biographies&page=1&pageSize=8"><span class="custom-style-type">»</span>BIOGRAPHIES</a>
+                      <a class="nav-link" href="#/home/category/?category=fantasy&page=1&pageSize=8"><span class="custom-style-type">»</span>FANTASY</a>
+                      <a class="nav-link" href="#/home/category/?category=science-fiction&page=1&pageSize=8"><span class="custom-style-type">»</span>SCIENCE FICTION</a>
+                      <a class="nav-link" href="#/home/category/?category=mystery&page=1&pageSize=8"><span class="custom-style-type">»</span>MYSTERY</a>
+                      <a class="nav-link" href="#/home/category/?category=romance&page=1&pageSize=8"><span class="custom-style-type">»</span>ROMANCE</a>
+                  </div>
+              </div>
             </li>
             <li class="nav-item nav-item-profile hidden">
-              <a class="nav-link" href="#/create-review">CREATE REVIEW</a>
+              <a class="nav-link" href="#/create-review">REVIEW</a>
             </li>
             <li class="nav-item nav-item-profile hidden">
               <div class="nav-link dropdown">
-                <a class="dropbtn">MY PROFILE</a>
+                <a class="dropbtn">PROFILE</a>
                 <div class="dropdown-content">
                   <a href="#/home/profile/password-reset"><span class="custom-style-type">»</span>Reset Password</a>
                   <a href="#/home/profile/change-avatar"><span class="custom-style-type">»</span>Change Avatar</a>
@@ -64,8 +61,8 @@
             </li>
           </ul>
   
-          <form action="#/home/search/?page=1&pageSize=5" class="form-inline my-2 my-lg-0">
-            <input class="search-box mr-sm-2" id="search-box" type="text" placeholder="Search by book title...">
+          <form action="#/home/search/?page=1&pageSize=5" id="search-box" class="form-inline my-2 my-lg-0">
+            <input class="search-box mr-sm-2" id="search-input" type="text" placeholder="Search by book title...">
           </form>
         </div>
       </nav>
@@ -77,8 +74,8 @@
     </main>
   
     <footer>
-      <div class="row justify-content-center no-gutters footer-container">
-        <div class="col- footer-widget">
+      <div class="row footer-container">
+        <div class="col-ts-12 col-sm-6 col-md-3 footer-widget">
           <h3 class="footer-widget-header">RECENT POSTS</h3>
           <div class="footer-widget-content-container">
             <div><span class="custom-style-type">»</span><span class="footer-widget-content">Fusce suscipit sapien sit amet </span></div>
@@ -91,16 +88,16 @@
           </div>
         </div>
   
-        <div class="col- footer-widget">
+        <div class="col-ts-12 col-sm-6 col-md-3 footer-widget">
           <h3 class="footer-widget-header">CUSTOM TEXT WIDGET</h3>
           <div class="footer-widget-content-container">
             <span>Fusce suscipit sapien sit amet sapien placerat ultrices. Vivamus sed massa ac metus gravida dignissim egestas posuere lorem.
   Sed ipsum urna, facilisis quis eleifend ut, sodales sed lectus. Integer felis eu ipsum malesuada luctus. Sed pharetra eleifend
-  ante vitae fermentum. Praesent fermentum volutpat porta.</span>
+  ante vitae fermentum. Praesent fermentum volutpat porta.Fusce suscipit sapien sit amet sapien placerat ultrices. </span>
           </div>
         </div>
   
-        <div class="col- footer-widget">
+        <div class="col-ts-12 col-sm-6 col-md-3 footer-widget">
           <h3 class="footer-widget-header">RECENT POSTS</h3>
           <div class="footer-widget-content-container">
             <div><span class="custom-style-type">»</span><span class="footer-widget-content">Fusce suscipit sapien sit amet </span></div>
@@ -113,7 +110,7 @@
           </div>
         </div>
   
-        <div class="col- footer-widget">
+        <div class="col-ts-12 col-sm-6 col-md-3 footer-widget">
           <h3 class="footer-widget-header">ARCHIVES</h3>
           <div class="footer-widget-content-container">
             <div><span class="custom-style-type">»</span><span class="footer-widget-content">Fusce suscipit sapien sit amet </span></div>

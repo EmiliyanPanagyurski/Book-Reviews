@@ -1,7 +1,8 @@
-<div class="row reviews-containter">
+<div class="row" id="reviews-containter">
     {{#each reviews}}
-    <div class="col- reviews-single-review">
-        <a href="#/home/review/{{authorUid}}{{title}}">
+    <div class="col-ts-12 col-sm-6 col-md-3 col-lg-2 eq-height">
+        <div class="reviews-single-review">
+            <a href="#/home/review/{{authorUid}}{{title}}">
             <div class="single-review-image-containter">
                 <div class="single-review-category">
                     {{category}}
@@ -13,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="single-review-title">
+            <div class="single-review-title" title="{{{title}}}">
                 {{{title}}}
             </div>
 
@@ -22,29 +23,31 @@
             </div>
 
             <div class="single-review-content">
-                {{{content}}}
+                {{{substr '90' content}}}
             </div>
 
-            <img class="bottom-line" src="./images/bottom-line.png">
+            <div class="botom-line"></div>
         </a>
+        </div>
     </div>
     {{/each}}
 </div>
 
-{{#if pagination}}
-<div class="row pagination-container no-gutters">
-    <div class="d-flex justify-content-start" id="previous">
-        <a href="#/home/search/?page=1&pageSize={{pageSize}}">«</a>
-    </div>
+    {{#if pagination}}
+    <div class="row pagination-container">
+        <div class="d-flex justify-content-start" id="previous">
+            <a href="#/home/?page=1&pageSize={{pageSize}}">«</a>
+        </div>
 
-    <div class="col d-flex justify-content-center pages">
-        {{#each pageNumbers}}
-        <a href="#/home/search/?page={{this}}&pageSize={{../pageSize}}">{{this}}</a>
-        {{/each}}
-    </div>
+        <div class="col d-flex justify-content-center pages">
+            {{#each pageNumbers}}
+            <a id="page{{this}}" href="#/home/?page={{this}}&pageSize={{../pageSize}}">{{this}}</a>
+            {{/each}}
+        </div>
 
-    <div class="d-flex justify-content-end" id="next">
-        <a href="#/home/search/?page={{countPages}}&pageSize={{pageSize}}">»</a>
+        <div class="d-flex justify-content-end" id="next">
+            <a href="#/home/?page={{countPages}}&pageSize={{pageSize}}">»</a>
+        </div>
     </div>
+    {{/if}}
 </div>
-{{/if}}

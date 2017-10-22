@@ -20,6 +20,7 @@ SystemJS.config({
         'user-controls': '../scripts/utils/user.control.js',
         'validator': '../scripts/utils/validator.js',
         'review-sort': '../scripts/utils/reviews.sort.js',
+        'handlebars-substr': '../scripts/utils/handlebars.substr.js',
 
         // models
         'user-model': '../scripts/data/models/user.model.js',
