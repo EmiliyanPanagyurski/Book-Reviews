@@ -1,112 +1,163 @@
 <div class="sitemap">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#/home">Home</a></li>
-        <li class="breadcrumb-item"><a class="breadcrumb-item-category" href="#/home/category/?category={{category}}&page=1&pageSize=5">{{category}}</a></li>
-        <li class="breadcrumb-item">{{review.title}}</li>
+        <li class="breadcrumb-item"><a class="breadcrumb-item-category" href="#/home/category/?category={{category}}&page=1&pageSize=8">{{category}}</a></li>
+        <li class="breadcrumb-item"><a>{{review.title}}</a></li>
     </ol>
 </div>
 
-<div class="detailed-review-container">
-    <div class="row no-gutters">
-        <div class="col da-details">
-            <div class="da-image-container">
+<div class="row">
+    <div class="col-ts-12 col-md-8 col-lg-9">
+        <div class="detailed-review-container">
+            <div class="row">
+                <div class="col-ts-12 col-lg-3 da-details">
+                    <div class="da-image-container">
 
-                <div class="da-category">
-                    {{review.category}}
+                        <div class="da-category">
+                            {{review.category}}
+                        </div>
+                        <img class="da-image" src="{{review.image}}">
+                        <div class="da-date">
+                            <span>{{review.month}}</span>
+                            <span> {{review.day}}</span>
+                        </div>
+
+                    </div>
+                    <div class="single-review-tags-container">
+                        <h3>Tags</h3>
+                        <span>future feature</span>
+                    </div>
+
+                    <div class="single-review-related-container">
+                        <h3>Related posts</h3>
+                        <a href="#/home">Fusce suscipit sapien sit amet</a><br />
+                        <a href="#/home">Fusce suscipit sapien sit amet</a><br />
+                        <a href="#/home">Fusce suscipit sapien sit amet</a><br />
+                    </div>
+
+                    <div class="single-review-share-icons-container">
+                        <h3>SHARE THIS</h3>
+                        <span>
+                        <a target="popup" onclick="window.open('http://twitter.com/intent/tweet?status={{review.title}}+https%3A%2F%2Fbook-reviews-6be1a.firebaseapp.com%2F%23%2Fhome%2Freview%2F{{review.authorUid}}+{{review.title}}','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;"
+                            href="http://twitter.com/intent/tweet?status={{review.title}}+https%3A%2F%2Fbook-reviews-6be1a.firebaseapp.com%2F%23%2Fhome%2Freview%2F{{review.authorUid}}+{{review.title}}">
+                        <img src="../../images/share-icon1.png" alt="twitter icon">
+                        </a>
+                    </span>
+
+                        <span>
+                        <a id="share-btn" title="Share on Facebook"
+                        href="https://www.facebook.com/sharer.php?caption={{review.title}}&description={{review.content}}&u=https%3A%2F%2Fbook-reviews-6be1a.firebaseapp.com%2F%23%2Fhome%2Freview%2F{{review.authorUid}}+{{review.title}}&picture=https://book-reviews-6be1a.firebaseapp.com/images/logo.png"
+                        target="_blank">
+                            <img src="../../images/share-icon2.png" alt="facebook icon">
+                        </a>
+                    </span>
+
+                        <span>
+                        <a href="javascript:(function($){var bookmarklet=document.getElementById('DELI_save_link_slidedown');if(bookmarklet){$('#DELI_mist').show();$('#DELI_save_link_slidedown').slideDown('normal');return};if(!window.jQuery){node=document.createElement('SCRIPT');node.type='text/javascript';node.src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';document.body.appendChild(node)}node=document.createElement('SCRIPT');node.type='text/javascript';node.src=window.location.protocol+'//del.icio.us/save/get_bookmarklet_save?url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title)+'&notes='+encodeURIComponent(''+(window.getSelection?window.getSelection():document.getSelection?document.getSelection():document.selection.createRange().text));document.body.appendChild(node)})(window.jQuery);">
+                            <img src="../../images/share-icon3.png" alt="delicious icon">
+                        </a>
+                    </span>
+
+                        <span>
+                        <a href="http://www.digg.com/submit?url=https%3A%2F%2Fbook-reviews-6be1a.firebaseapp.com%2F%23%2Fhome%2Freview%2F{{review.authorUid}}+{{review.title}}" target="_blank">
+                            <img src="../../images/share-icon4.png" alt="digg icon">
+                        </a>
+                    </span>
+
+                        <span>
+                        <a href="http://reddit.com/submit?url=https%3A%2F%2Fbook-reviews-6be1a.firebaseapp.com%2F%23%2Fhome%2Freview%2F{{review.authorU.id}}+{{review.title}}&amp;title={{review.title}}" target="_blank">
+                            <img src="../../images/share-icon5.png" alt="reddit icon">
+                        </a>
+                    </span>
+                    </div>
                 </div>
-                <img class="da-image" src="{{review.image}}">
-                <div class="da-date">
-                    <span>{{review.month}}</span>
-                    <span> {{review.day}}</span>
+
+                <div class="col-ts-12 col-lg-9 da-content-container">
+                    <h1>{{review.title}}</h1>
+
+                    <div class="da-author">
+                        POSTED BY {{review.author}} IN {{review.category}} | {{commentsCount}} COMMENTS
+                    </div>
+
+                    <div class="da-content">
+                        {{review.content}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters justify-content-end review-comments-container-parent">
+            <div class="col-xs-12 col-lg-9 col-lg-offset-3 review-comments-container">
+                <div class="comments-count">
+                    {{commentsCount}} COMMENTS
                 </div>
 
-            </div>
-            <div class="da-share-icons-container">
-                <h3>SHARE THIS</h3>
-                <span>
-                    <a>
-                     <img src="./images/share-icon1.png">
-                    </a>
-                </span>
-
-                <span>
-                    <a>
-                     <img src="./images/share-icon2.png">
-                    </a>
-                </span>
-
-                <span>
-                    <a>
-                     <img src="./images/share-icon3.png">
-                    </a>
-                </span>
-                <span>
-                    <a>
-                     <img src="./images/share-icon4.png">
-                    </a>
-                </span>
-                <span>
-                    <a>
-                     <img src="./images/share-icon5.png">
-                    </a>
-                </span>
-            </div>
-        </div>
-
-        <div class="col da-content-container">
-            <h1>{{review.title}}</h1>
-
-            <div class="da-author">
-                POSTED BY {{review.author}} IN {{review.category}} | {{commentsCount}} COMMENTS
-            </div>
-
-            <div class="da-content">
-                {{review.content}}
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="row no-gutters justify-content-end review-comments-container-parent">
-    <div class="review-comments-container">
-        <div class="comments-count">
-            {{commentsCount}} COMMENTS
-        </div>
-
-        <div class="comments-list-container">
-            {{#each comments}}
-            <div class="comments-list-item row no-gutters">
-                <div class="col comment-item-info">
-                    <div class="comment-item-image-container">
-                        <img class="comment-author-avatar" src="{{image}}">
-                        <div class="comment-date">
-                            <span>{{month}}</span>
-                            <span>{{day}}</span>
+                <div class="comments-list-container">
+                    {{#each comments}}
+                    <div class="comments-list-item row no-gutters">
+                        <div class="col-xs-3 col-sm-2 comment-item-info">
+                            <div class="comment-item-image-container">
+                                <img class="comment-author-avatar" src="{{image}}">
+                                <div class="comment-date">
+                                    <span>{{month}}</span>
+                                    <span>{{day}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 col-sm-10 comment-item-contnet-container">
+                            <h4>{{author}}</h4>
+                            <div class="comment-item-content">
+                                {{content}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{#if isLoged}}
+                <div class="row add-comment-container add-comment-toggler">
+                    <div class="col-xs-12 col-md-8">
+                        <div>LEAVE A COMMENT</div>
+                        <div class="rc-custom-form">
+                            <form action="#/home/review/{{review.authorUid}}{{review.title}}/create-comment" method="post">
+                                <textarea name="content" id="comment-box" rows="8"></textarea>
+                                <br>
+                                <button type="submit" id="submit-comment">SUBMIT</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="col comment-item-contnet-container">
-                    <h4>{{author}}</h4>
-                    <div class="comment-item-content">
-                        {{content}}
-                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <aside class="col-ts-12 col-md-4 col-lg-3 sidebar-widgets">
+        <section class="sidebar-widget-container">
+            <div class="custom-widget-container">
+                <h3>CUSTOM SIDEBAR WIDGET</h3>
+                <div class="sidebar-widget-content-divider"></div>
+                <div class="sidebar-widget-links-container">
+                    <a href="#/home">Fusce suscipit sapien sit amet</a><br />
+                    <a href="#/home">Sapien placerat ultrices vivamus</a><br />
+                    <a href="#/home">Massa ac metus gravida</a><br />
+                    <a href="#/home">Posuere lorem sed ipsum urna</a><br />
+                    <a href="#/home">Quis eleifend ut sodales sed</a><br />
+                    <a href="#/home">Integer felis eu ipsum malesuada</a><br />
                 </div>
             </div>
-         {{/each}}
-        </div>
-        {{#if isLoged}}
-        <div class="add-comment-container add-comment-toggler">
-            <div>LEAVE A COMMENT</div>
-            <div class="rc-custom-form">
-                <form action="#/home/review/{{review.authorUid}}{{review.title}}/create-comment" method="post">
-                    <textarea name="content" id="comment-box" rows="8"></textarea>
-                    <div>
-                        <input type="submit" id="submit-comment" value="SUBMIT">
-                    </div>
-                </form>
+            <div class="botom-line"></div>
+        </section>
+        <section class="sidebar-widget-container">
+            <div class="custom-widget-container">
+                <h3>CUSTOM SIDEBAR WIDGET</h3>
+                <div class="sidebar-widget-content-divider"></div>
+                <div class="sidebar-widget-content">
+                    Fusce suscipit sapien sit amet sapien placerat ultrices. Vivamus sed massa ac metus gravida dignissim egestas posuere lorem.
+                    Sed ipsum urna, facilisis quis eleifend ut, sodales sed lectus. Integer felis eu ipsum malesuada luctus.
+                    Sed pharetra eleifend ante vitae fermentum. Praesent fermentum volutpat porta.
+                </div>
+                <div class="border-bottom"></div>
             </div>
-        </div>
-        {{/if}}
-    </div>
+        </section>
+    </aside>
 </div>

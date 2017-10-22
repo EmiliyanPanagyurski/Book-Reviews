@@ -1,0 +1,1 @@
+const handlebarsSubstr=Handlebars.registerHelper("substr",(r,s,e)=>s.length>r?s.substring(0,r)+"...":s);export{handlebarsSubstr};
