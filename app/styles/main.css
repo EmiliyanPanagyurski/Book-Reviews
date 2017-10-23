@@ -97,7 +97,7 @@ a:visited {
 }
 
 .dropdown-content a:hover .custom-style-type{
-  color: #9a1d0d;
+  color: #dcc08e;
 }
 
 .custom-style-type {
@@ -141,7 +141,6 @@ a:visited {
 
 /* CONTENT */
 #content {
-    border-bottom: 1px solid #0D4C50;
     margin: 0 auto;
     min-height: 400px;
     width: 95%;
@@ -220,7 +219,7 @@ a:visited {
     color: #fff;
     text-shadow: 1px 1px #000;
     letter-spacing: 2px;
-    background-color: #9a1d0d;
+    background-color: #7E426D;
     display: inline-block;
     padding: 1px 2px 1px 3px;
     position: absolute;
@@ -310,7 +309,7 @@ a:visited {
 }
 
 .single-review-title {
-  color: #9a1d0d;
+  color: #7E426D;
   overflow: hidden;
   font-size: 32px;
   letter-spacing: 1px;
@@ -374,7 +373,7 @@ a:visited {
 }
 .comments-count {
     font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
-    color: #9a1d0d;
+    color: #7E426D;
     letter-spacing: 1px;
     font-size: 40px;
     margin-top: 20px;
@@ -408,7 +407,7 @@ a:visited {
   margin-top: 15px
 }
 .da-content-container h1 {
-  color: #9a1d0d;
+  color: #7E426D;
   letter-spacing: 1px
 }
 .da-author,
@@ -527,7 +526,7 @@ comments-list-container {
 }
 .add-comment-container div:first-child {
   font-family: LeagueGothic, Helvetica Neue, Helvetica, Sans Serif;
-  color: #9a1d0d;
+  color: #7E426D;
   letter-spacing: 1px;
   font-size: 40px;
   margin-top: 20px;
@@ -632,7 +631,7 @@ aside a {
 }
 
 .sidebar-widget-container h3 {
-    color: #9a1d0d;
+    color: #7E426D;
     font-family: LeagueGothic;
     font-size: 30px;
     margin: 10px 0;
@@ -675,12 +674,13 @@ aside a {
 
 .sidebar-widget-links-container a {
     line-height: 25px;
+    color: grey;
 }
 
 /* footer */
 footer {
   background-color: #0D4C50;
-  border-top: 1px solid #0D4C50;
+  border-top: 1px solid #317476;
   box-shadow: 0 5px 15px #000;
   padding: 20px 20px 70px;
 }
@@ -720,6 +720,7 @@ footer {
 @media (max-width: 990px) {
     .da-image-container {
         margin-right: 30px;
+        width: 80%;
       }
     .da-content-container {
         margin-top: 15px;
